@@ -8,8 +8,8 @@ public class Client {
 	
 		Game game = new Game();
 	
-		
-		game.distributeCards();
+		//game.distributeCards();
+		game.getMyCardsFromUser();
 		
 		System.out.print("What is TRUMP Card (D,H,C,S): ");
 		game.setTrumpCard(input.next().toUpperCase());
@@ -18,14 +18,12 @@ public class Client {
 		game.setFirstPlayer(input.nextInt());
 		
 		while (true) {
+			
+			game.displayMyCards();
 			game.run();
 			game.whoIsWin();
-			
-			// game.display();
+		
 		}
-		
-		
-		
 		
 	}
 	

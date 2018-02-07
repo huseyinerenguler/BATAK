@@ -128,6 +128,25 @@ public class Game {
 		}
 	}
 	
+	public void getMyCardsFromUser() {
+		
+		String[] card = new String[2];
+		
+		for (int x = 0; x < 13; x++) {
+			System.out.print("Enter " + (x+1) + ". card (D5,H6,C13,S14): ");
+			card = input.next().toUpperCase().split("");
+			
+			if (card[0] == "D")
+				myPlayer.addToDiamonds(new Integer(card[1]));
+			else if (card[0] == "H")
+				myPlayer.addToHearts(new Integer(card[1]));
+			else if (card[0] == "C")
+				myPlayer.addToClubs(new Integer(card[1]));
+			else if (card[0] == "S")
+				myPlayer.addToSpades(new Integer(card[1]));
+		}
+	}
+	
 	// This function finds the winner and determines the first player for the new hand.
 	public void whoIsWin () {
 		
@@ -136,15 +155,19 @@ public class Game {
 		String[] winner = compareTwoCards(semiFinalist1, semiFinalist2);
 		
 		if (winner == myCard) {
+			System.out.println("\nsetFirstPlayer(0)\n");
 			setFirstPlayer(0);
 		}
 		else if (winner == firstEnemyCard) {
+			System.out.println("\nsetFirstPlayer(1)\n");
 			setFirstPlayer(1);
 		}
 		else if (winner == secondEnemyCard) {
+			System.out.println("\nsetFirstPlayer(2)\n");
 			setFirstPlayer(2);
 		}
 		else if (winner == thirdEnemyCard) {
+			System.out.println("\nsetFirstPlayer(3)\n");
 			setFirstPlayer(3);
 		}
 	}
@@ -154,7 +177,7 @@ public class Game {
 		
 		if ((card1[0] == firstCardType && card2[0] == firstCardType) || 
 			(card1[0] == trumpCard && card2[0] == trumpCard) || 
-			(card1[0] != firstCardType && card2[0] != firstCardType)) {
+			(card1[0] != firstCardType && card2[0] != firstCardType && card1[0] != trumpCard && card2[0] != trumpCard)) {
 			
 			if (new Integer(card1[1]) > new Integer(card2[1])) {
 				return card1;
@@ -172,11 +195,11 @@ public class Game {
 			return card2;
 		}
 		
-		if (card1[0] == firstCardType && card2[0] != firstCardType) {
+		if (card1[0] == firstCardType && card2[0] != firstCardType && card2[0] != trumpCard) {
 			return card1;
 		}
 		
-		if (card1[0] != firstCardType && card2[0] == firstCardType) {
+		if (card1[0] != trumpCard && card1[0] != firstCardType && card2[0] == firstCardType) {
 			return card2;
 		}
 		
@@ -186,7 +209,11 @@ public class Game {
 	public void run() {
 		
 		if (firstPlayer == 0) {
-			// what is my card ?
+			System.out.println();
+			// what is my card ?			
+			System.out.print("What is MY CARD?: ");
+			setMyCard(input.next().toUpperCase().split(""));
+			
 			firstCardType = myCard[0];
 			
 			System.out.print("What is FIRST Enemy Card: "); // D5, H6, C12, S10 ...
@@ -200,8 +227,10 @@ public class Game {
 		}
 		
 		else if (firstPlayer == 1) {
+			System.out.println();
 			System.out.print("What is FIRST Enemy Card: ");
 			setFirstEnemyCard(input.next().toUpperCase().split(""));
+			
 			firstCardType = firstEnemyCard[0];
 			
 			System.out.print("What is SECOND Enemy Card: ");
@@ -210,17 +239,22 @@ public class Game {
 			System.out.print("What is THIRD Enemy Card: ");
 			setThirdEnemyCard(input.next().toUpperCase().split(""));
 			
-			// what is my card ?
+			setMyCard(myPlayer.whatIsMyCardAsLastCard(trumpCard, firstCardType, firstEnemyCard, secondEnemyCard, thirdEnemyCard));
+			System.out.println("Bilgisayarin oynayacagi bizim kartimiz: " + myCard[0] + myCard[1]);
 		}
 		
 		else if (firstPlayer == 2) {
+			System.out.println();
 			System.out.print("What is SECOND Enemy Card: ");
 			setSecondEnemyCard(input.next().toUpperCase().split(""));
+			
 			firstCardType = secondEnemyCard[0];
 			
 			System.out.print("What is THIRD Enemy Card: ");
 			setThirdEnemyCard(input.next().toUpperCase().split(""));
 			
+			System.out.print("What is MY CARD?: ");
+			setMyCard(input.next().toUpperCase().split(""));
 			// what is my card ? 
 			
 			System.out.print("What is FIRST Enemy Card: ");
@@ -228,10 +262,14 @@ public class Game {
 		}
 		
 		else if (firstPlayer == 3) {
+			System.out.println();
 			System.out.print("What is THIRD Enemy Card: ");
 			setThirdEnemyCard(input.next().toUpperCase().split(""));
+			
 			firstCardType = thirdEnemyCard[0];
 			
+			System.out.print("What is MY CARD?: ");
+			setMyCard(input.next().toUpperCase().split(""));
 			// what is my card ? 
 			
 			System.out.print("What is FIRST Enemy Card: ");
@@ -275,20 +313,11 @@ public class Game {
 	}
 	
 	// gereksiz
-	public void display () {
+	public void displayMyCards () {
 		
 		System.out.println("\nMy Diamonds: " + myPlayer.getDiamonds());
-		System.out.println("Not My Diamonds: " + myPlayer.getNotMyDiamonds());
-		System.out.println("Drop Diaomonds: " + myPlayer.getDropDiamonds());
-		
-		/*System.out.println("\nHearts: " + myPlayer.getHearts());
-		System.out.println("Not My Hearts: " + myPlayer.getNotMyHearts());
-		
-		System.out.println("\nClubs: " + myPlayer.getClubs());
-		System.out.println("Not My Clubs: " + myPlayer.getNotMyClubs());
-		
-		System.out.println("\nSpades: " + myPlayer.getSpades());
-		System.out.println("Not My Spades: " + myPlayer.getNotMySpades());
-		*/
+		System.out.println("Hearts: " + myPlayer.getHearts());
+		System.out.println("Clubs: " + myPlayer.getClubs());
+		System.out.println("Spades: " + myPlayer.getSpades());
 	}
 }
