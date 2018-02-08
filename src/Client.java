@@ -1,3 +1,9 @@
+/*
+ * set first player fonksiyonu duzgun calýsmýyor
+ * son kart atma fonksiyonu da duzgun calýsmýyor
+ */
+
+
 import java.util.Scanner;
 
 public class Client {
@@ -8,8 +14,13 @@ public class Client {
 	
 		Game game = new Game();
 	
-		//game.distributeCards();
-		game.getMyCardsFromUser();
+		game.distributeCards();
+		
+		game.displayMyCards();
+		
+		//game.getMyCardsFromUser();
+		
+	
 		
 		System.out.print("What is TRUMP Card (D,H,C,S): ");
 		game.setTrumpCard(input.next().toUpperCase());
@@ -19,10 +30,8 @@ public class Client {
 		
 		while (true) {
 			
-			game.displayMyCards();
 			game.run();
 			game.whoIsWin();
-		
 		}
 		
 	}

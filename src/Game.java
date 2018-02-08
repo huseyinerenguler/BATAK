@@ -20,49 +20,63 @@ public class Game {
 	public void setMyCard(String[] myCard) {
 		this.myCard = myCard;
 		
-		if (myCard[0].compareToIgnoreCase("D") == 0)
+		if (myCard[0].equalsIgnoreCase("D")) {
+			myPlayer.removeFromDiamonds(new Integer(myCard[1]));
 			myPlayer.addToDropDiamonds(new Integer(myCard[1]));
-		else if (myCard[0].compareToIgnoreCase("H") == 0)
+		}
+			
+		else if (myCard[0].equalsIgnoreCase("H")) {
+			myPlayer.removeFromHearts(new Integer(myCard[1]));
 			myPlayer.addToDropHearts(new Integer(myCard[1]));
-		else if (myCard[0].compareToIgnoreCase("C") == 0)
+		}
+			
+		else if (myCard[0].equalsIgnoreCase("C")) {
+			myPlayer.removeFromClubs(new Integer(myCard[1]));
 			myPlayer.addToDropClubs(new Integer(myCard[1]));
-		else if (myCard[0].compareToIgnoreCase("S") == 0)
+		}
+			
+		else if (myCard[0].equalsIgnoreCase("S")) {
+			myPlayer.removeFromSpades(new Integer(myCard[1]));
 			myPlayer.addToDropSpades(new Integer(myCard[1]));
+		}
+			
 	}	
 	public void setFirstEnemyCard(String[] firstEnemyCard) {
 		this.firstEnemyCard = firstEnemyCard;
 		
-		if (firstEnemyCard[0].compareToIgnoreCase("D") == 0)
+		
+		
+		if (firstEnemyCard[0].equalsIgnoreCase("D"))
 			myPlayer.addToDropDiamonds(new Integer(firstEnemyCard[1]));
-		else if (firstEnemyCard[0].compareToIgnoreCase("H") == 0)
+		else if (firstEnemyCard[0].equalsIgnoreCase("H"))
 			myPlayer.addToDropHearts(new Integer(firstEnemyCard[1]));
-		else if (firstEnemyCard[0].compareToIgnoreCase("C") == 0)
+		else if (firstEnemyCard[0].equalsIgnoreCase("C"))
 			myPlayer.addToDropClubs(new Integer(firstEnemyCard[1]));
-		else if (firstEnemyCard[0].compareToIgnoreCase("S") == 0)
+		else if (firstEnemyCard[0].equalsIgnoreCase("S"))
 			myPlayer.addToDropSpades(new Integer(firstEnemyCard[1]));
 	}
 	public void setSecondEnemyCard(String[] secondEnemyCard) {
 		this.secondEnemyCard = secondEnemyCard;
 		
-		if (secondEnemyCard[0].compareToIgnoreCase("D") == 0)
+		if (secondEnemyCard[0].equalsIgnoreCase("D"))
 			myPlayer.addToDropDiamonds(new Integer(secondEnemyCard[1]));
-		else if (secondEnemyCard[0].compareToIgnoreCase("H") == 0)
+		else if (secondEnemyCard[0].equalsIgnoreCase("H"))
 			myPlayer.addToDropHearts(new Integer(secondEnemyCard[1]));
-		else if (secondEnemyCard[0].compareToIgnoreCase("C") == 0)
+		else if (secondEnemyCard[0].equalsIgnoreCase("C"))
 			myPlayer.addToDropClubs(new Integer(secondEnemyCard[1]));
-		else if (secondEnemyCard[0].compareToIgnoreCase("S") == 0)
+		else if (secondEnemyCard[0].equalsIgnoreCase("S"))
 			myPlayer.addToDropSpades(new Integer(secondEnemyCard[1]));
 	}
 	public void setThirdEnemyCard(String[] thirdEnemyCard) {
 		this.thirdEnemyCard = thirdEnemyCard;
 		
-		if (thirdEnemyCard[0].compareToIgnoreCase("D") == 0)
+		if (thirdEnemyCard[0].equalsIgnoreCase("D"))
 			myPlayer.addToDropDiamonds(new Integer(thirdEnemyCard[1]));
-		else if (thirdEnemyCard[0].compareToIgnoreCase("H") == 0)
+		else if (thirdEnemyCard[0].equalsIgnoreCase("H"))
 			myPlayer.addToDropHearts(new Integer(thirdEnemyCard[1]));
-		else if (thirdEnemyCard[0].compareToIgnoreCase("C") == 0)
+		else if (thirdEnemyCard[0].equalsIgnoreCase("C"))
 			myPlayer.addToDropClubs(new Integer(thirdEnemyCard[1]));
-		else if (thirdEnemyCard[0].compareToIgnoreCase("S") == 0)
+		else if (thirdEnemyCard[0].equalsIgnoreCase("S"))
 			myPlayer.addToDropSpades(new Integer(thirdEnemyCard[1]));
 	}
 	public void setFirstPlayer(int firstPlayer) {
@@ -134,15 +148,15 @@ public class Game {
 		
 		for (int x = 0; x < 13; x++) {
 			System.out.print("Enter " + (x+1) + ". card (D5,H6,C13,S14): ");
-			card = input.next().toUpperCase().split("");
+			card = input.next().toUpperCase().split("",2);
 			
-			if (card[0] == "D")
+			if (card[0].equalsIgnoreCase("D"))
 				myPlayer.addToDiamonds(new Integer(card[1]));
-			else if (card[0] == "H")
+			else if (card[0].equalsIgnoreCase("H"))
 				myPlayer.addToHearts(new Integer(card[1]));
-			else if (card[0] == "C")
+			else if (card[0].equalsIgnoreCase("C"))
 				myPlayer.addToClubs(new Integer(card[1]));
-			else if (card[0] == "S")
+			else if (card[0].equalsIgnoreCase("S"))
 				myPlayer.addToSpades(new Integer(card[1]));
 		}
 	}
@@ -156,19 +170,19 @@ public class Game {
 		
 		if (winner == myCard) {
 			System.out.println("\nsetFirstPlayer(0)\n");
-			setFirstPlayer(0);
+			this.setFirstPlayer(0);
 		}
 		else if (winner == firstEnemyCard) {
 			System.out.println("\nsetFirstPlayer(1)\n");
-			setFirstPlayer(1);
+			this.setFirstPlayer(1);
 		}
 		else if (winner == secondEnemyCard) {
 			System.out.println("\nsetFirstPlayer(2)\n");
-			setFirstPlayer(2);
+			this.setFirstPlayer(2);
 		}
 		else if (winner == thirdEnemyCard) {
 			System.out.println("\nsetFirstPlayer(3)\n");
-			setFirstPlayer(3);
+			this.setFirstPlayer(3);
 		}
 	}
 	
@@ -212,32 +226,32 @@ public class Game {
 			System.out.println();
 			// what is my card ?			
 			System.out.print("What is MY CARD?: ");
-			setMyCard(input.next().toUpperCase().split(""));
+			setMyCard(input.next().toUpperCase().split("",2));
 			
 			firstCardType = myCard[0];
 			
 			System.out.print("What is FIRST Enemy Card: "); // D5, H6, C12, S10 ...
-			setFirstEnemyCard(input.next().toUpperCase().split(""));
+			setFirstEnemyCard(input.next().toUpperCase().split("",2));
 			
 			System.out.print("What is SECOND Enemy Card: ");
-			setSecondEnemyCard(input.next().toUpperCase().split(""));
+			setSecondEnemyCard(input.next().toUpperCase().split("",2));
 			
 			System.out.print("What is THIRD Enemy Card: ");
-			setThirdEnemyCard(input.next().toUpperCase().split(""));
+			setThirdEnemyCard(input.next().toUpperCase().split("",2));
 		}
 		
 		else if (firstPlayer == 1) {
 			System.out.println();
 			System.out.print("What is FIRST Enemy Card: ");
-			setFirstEnemyCard(input.next().toUpperCase().split(""));
+			setFirstEnemyCard(input.next().toUpperCase().split("",2));
 			
 			firstCardType = firstEnemyCard[0];
 			
 			System.out.print("What is SECOND Enemy Card: ");
-			setSecondEnemyCard(input.next().toUpperCase().split(""));
+			setSecondEnemyCard(input.next().toUpperCase().split("",2));
 			
 			System.out.print("What is THIRD Enemy Card: ");
-			setThirdEnemyCard(input.next().toUpperCase().split(""));
+			setThirdEnemyCard(input.next().toUpperCase().split("",2));
 			
 			setMyCard(myPlayer.whatIsMyCardAsLastCard(trumpCard, firstCardType, firstEnemyCard, secondEnemyCard, thirdEnemyCard));
 			System.out.println("Bilgisayarin oynayacagi bizim kartimiz: " + myCard[0] + myCard[1]);
@@ -246,41 +260,41 @@ public class Game {
 		else if (firstPlayer == 2) {
 			System.out.println();
 			System.out.print("What is SECOND Enemy Card: ");
-			setSecondEnemyCard(input.next().toUpperCase().split(""));
+			setSecondEnemyCard(input.next().toUpperCase().split("",2));
 			
 			firstCardType = secondEnemyCard[0];
 			
 			System.out.print("What is THIRD Enemy Card: ");
-			setThirdEnemyCard(input.next().toUpperCase().split(""));
+			setThirdEnemyCard(input.next().toUpperCase().split("",2));
 			
 			System.out.print("What is MY CARD?: ");
-			setMyCard(input.next().toUpperCase().split(""));
+			setMyCard(input.next().toUpperCase().split("",2));
 			// what is my card ? 
 			
 			System.out.print("What is FIRST Enemy Card: ");
-			setFirstEnemyCard(input.next().toUpperCase().split(""));
+			setFirstEnemyCard(input.next().toUpperCase().split("",2));
 		}
 		
 		else if (firstPlayer == 3) {
 			System.out.println();
 			System.out.print("What is THIRD Enemy Card: ");
-			setThirdEnemyCard(input.next().toUpperCase().split(""));
+			setThirdEnemyCard(input.next().toUpperCase().split("",2));
 			
 			firstCardType = thirdEnemyCard[0];
 			
 			System.out.print("What is MY CARD?: ");
-			setMyCard(input.next().toUpperCase().split(""));
+			setMyCard(input.next().toUpperCase().split("",2));
 			// what is my card ? 
 			
 			System.out.print("What is FIRST Enemy Card: ");
-			setFirstEnemyCard(input.next().toUpperCase().split(""));
+			setFirstEnemyCard(input.next().toUpperCase().split("",2));
 			
 			System.out.print("What is SECOND Enemy Card: ");
-			setSecondEnemyCard(input.next().toUpperCase().split(""));
+			setSecondEnemyCard(input.next().toUpperCase().split("",2));
 		}
 	}
 	
-	// gereksiz
+	// unnecessary
 	public void calculateExactHand() {
 		
 		int diamondsNumber = 0;
@@ -312,7 +326,7 @@ public class Game {
 		
 	}
 	
-	// gereksiz
+	// unnecessary
 	public void displayMyCards () {
 		
 		System.out.println("\nMy Diamonds: " + myPlayer.getDiamonds());

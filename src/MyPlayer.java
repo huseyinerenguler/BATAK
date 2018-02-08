@@ -168,24 +168,23 @@ public class MyPlayer extends Player {
 	
 		int max_value = 1;
 		
-		if (firstPlayerCard[0] == cardType) {
+		if (firstPlayerCard[0].equalsIgnoreCase(cardType)) {
 			if (new Integer(firstPlayerCard[1]) > max_value)
 				max_value = new Integer(firstPlayerCard[1]);
 		}
 		
-		if (secondPlayerCard[0] == cardType) {
+		if (secondPlayerCard[0].equalsIgnoreCase(cardType)) {
 			if (new Integer(secondPlayerCard[1]) > max_value)
 				max_value = new Integer(secondPlayerCard[1]);
 		}
 		
-		if (thirdPlayerCard[0] == cardType) {
+		if (thirdPlayerCard[0].equalsIgnoreCase(cardType)) {
 			if (new Integer(thirdPlayerCard[1]) > max_value)
 				max_value = new Integer(thirdPlayerCard[1]);
 		}
 		
 		return max_value;
 	}
-	
 	
 	/*
 	// not finish lunge->card
@@ -243,9 +242,7 @@ public class MyPlayer extends Player {
 		
 		
 	}*/
-	
-	
-	
+		
 	public void addToDiamonds(int card) {
 		super.addToDiamonds(card);
 		removeFromNotMyDiamonds(card);
@@ -262,8 +259,6 @@ public class MyPlayer extends Player {
 		super.addToSpades(card);
 		removeFromNotMySpades(card);
 	}
-	
-	
 	
 	public void addToNotMyDiamonds(int card) {
 		notMyDiamonds.add(card);
@@ -303,8 +298,6 @@ public class MyPlayer extends Player {
 	public ArrayList<Integer> getNotMySpades() {
 		return notMySpades;
 	}
-	
-	
 	
 	public void addToDropDiamonds(int card) {
 		dropDiamonds.add(card);
