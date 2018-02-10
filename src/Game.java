@@ -161,8 +161,7 @@ public class Game {
 	public int getFirstPlayer() {
 		return firstPlayer;
 	}	
-	
-	/*
+
 	// This function distributes the cards in a mixed way to the players.
 	public void distributeCards() {
 		
@@ -201,7 +200,7 @@ public class Game {
 					myPlayer.addToSpades(randomNumber%13 + 2);
 			}
 		}
-	}*/
+	}
 	
 	public void getMyCardsFromUser() {
 		
@@ -224,15 +223,11 @@ public class Game {
 	
 	// This function finds the winner and determines the first player for the new hand.
 	public void whoIsWin () {
-		
-		System.out.println("ilk incerde print: " + firstPlayer);
-		
+				
 		String[] semiFinalist1 = compareTwoCards(myCard, firstEnemyCard);
 		String[] semiFinalist2 = compareTwoCards(secondEnemyCard, thirdEnemyCard);
 		String[] winner = compareTwoCards(semiFinalist1, semiFinalist2);
-		
-		System.out.println(winner[0] + winner[1]);
-		
+
 		if (winner[0].equalsIgnoreCase(myCard[0])) {
 			if (winner[1].equalsIgnoreCase(myCard[1])) {
 				this.setFirstPlayer(0);
@@ -257,7 +252,6 @@ public class Game {
 		if (winner[0].equalsIgnoreCase(thirdEnemyCard[0])) {
 			if (winner[1].equalsIgnoreCase(thirdEnemyCard[1])) {
 				this.setFirstPlayer(3);
-				System.out.println("ıcerde: " + firstPlayer);
 				return;
 			}
 		}
@@ -271,67 +265,42 @@ public class Game {
 		
 		if ((card1[0].equalsIgnoreCase(trumpCard) && card2[0].equalsIgnoreCase(trumpCard)) || 
 			(card1[0].equalsIgnoreCase(firstCardType) && card2[0].equalsIgnoreCase(firstCardType))) {
-			
-			// buyuk olan
+			// KK, FF
+			if (new Integer(card1[1]) > new Integer(card2[1]))
+				return card1;
+			else if (new Integer(card1[1]) < new Integer(card2[1]))
+				return card2;
 		}
-		
-		
 		
 		if (card1[0].equalsIgnoreCase(trumpCard) && !card2[0].equalsIgnoreCase(trumpCard)) {
-			
-			// card1
 			// KF, KO
-		}
-		
-		if (!card1[0].equalsIgnoreCase(trumpCard) && card2[0].equalsIgnoreCase(trumpCard)) {
-			
-			// card2
-			// FK, OK
-		}
-		
-		if (card1[0].equalsIgnoreCase(firstCardType) && !card2[0].equalsIgnoreCase(firstCardType) && !card2[0].equalsIgnoreCase(trumpCard)) {
-			
-			// card1
-			// FO
-		}
-		
-		if (!card1[0].equalsIgnoreCase(firstCardType) && !card1[0].equalsIgnoreCase(trumpCard) && card2[0].equalsIgnoreCase(firstCardType)) {
-			
-			// card1
-			// OF
-		}
-		
-		
-		
-		
-		
-		
-		
-		/*if ((card1[0].equalsIgnoreCase(firstCardType) && card2[0].equalsIgnoreCase(firstCardType)) || 
-			(card1[0].equalsIgnoreCase(trumpCard) && card2[0].equalsIgnoreCase(trumpCard)) || 
-			(!card1[0].equalsIgnoreCase(firstCardType) && !card2[0].equalsIgnoreCase(firstCardType) && !card1[0].equalsIgnoreCase(trumpCard) && card2[0].equalsIgnoreCase(trumpCard))) {
-			
-			if (new Integer(card1[1]) > new Integer(card2[1])) {
-				return card1;
-			}
-			else {
-				return card2;
-			}
-		}
-		
-		
-		if (card1[0] != trumpCard && card2[0] == trumpCard) {
-			return card2;
-		}
-		
-		if (card1[0] == firstCardType && card2[0] != firstCardType && card2[0] != trumpCard) {
 			return card1;
 		}
 		
-		if (card1[0] != trumpCard && card1[0] != firstCardType && card2[0] == firstCardType) {
+		if (!card1[0].equalsIgnoreCase(trumpCard) && card2[0].equalsIgnoreCase(trumpCard)) {
+			// FK, OK
 			return card2;
 		}
-		*/
+		
+		if (card1[0].equalsIgnoreCase(firstCardType) && !card2[0].equalsIgnoreCase(firstCardType) && !card2[0].equalsIgnoreCase(trumpCard)) {
+			// FO
+			return card1;
+		}
+		
+		if (!card1[0].equalsIgnoreCase(firstCardType) && !card1[0].equalsIgnoreCase(trumpCard) && card2[0].equalsIgnoreCase(firstCardType)) {
+			// OF
+			return card2;
+		}
+		
+		if (!card1[0].equalsIgnoreCase(firstCardType) && !card1[0].equalsIgnoreCase(trumpCard) &&
+			!card2[0].equalsIgnoreCase(firstCardType) && !card2[0].equalsIgnoreCase(trumpCard)) {
+			// OO
+			if (new Integer(card1[1]) > new Integer(card2[1]))
+				return card1;
+			else if (new Integer(card1[1]) < new Integer(card2[1]))
+				return card2;
+		}
+		
 		return null;
 	}
 	
@@ -408,9 +377,9 @@ public class Game {
 	
 	public void displayMyCards () {
 		
-		System.out.println("\nMy Diamonds: " + myPlayer.getDiamonds());
-		System.out.println("Hearts: " + myPlayer.getHearts());
-		System.out.println("Clubs: " + myPlayer.getClubs());
-		System.out.println("Spades: " + myPlayer.getSpades());
+		System.out.println("\nKaro: " + myPlayer.getDiamonds());
+		System.out.println("Kupa: " + myPlayer.getHearts());
+		System.out.println("Sinek: " + myPlayer.getClubs());
+		System.out.println("Maça: " + myPlayer.getSpades());
 	}
 }

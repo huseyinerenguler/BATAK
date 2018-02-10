@@ -14,7 +14,10 @@ public class Client {
 	
 		Game game = new Game();
 	
-		//game.getMyCardsFromUser(); // 1, it is work !
+		//game.distributeCards();
+		//game.displayMyCards();
+		game.getMyCardsFromUser(); // 1, it is work !
+		game.displayMyCards();
 		
 		System.out.print("\n--> What is TRUMP Card [Kupa, Maça, Sinek, Karo]: ");
 		game.setTrumpCard(input.next()); // 2, it is work !
@@ -26,7 +29,7 @@ public class Client {
 			
 			game.run();
 			game.whoIsWin();
-			System.out.println("firstssstst: " + game.getFirstPlayer());
+			game.displayMyCards();
 		}
 		
 	}

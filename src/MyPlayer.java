@@ -99,6 +99,7 @@ public class MyPlayer extends Player {
 		}
 		
 		else {
+			// bura calýsmýyor
 			// I know, this way is too bad, but it will change. 
 			
 			String cardType1 = "A";
