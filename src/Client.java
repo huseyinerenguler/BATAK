@@ -14,24 +14,19 @@ public class Client {
 	
 		Game game = new Game();
 	
-		game.distributeCards();
+		//game.getMyCardsFromUser(); // 1, it is work !
 		
-		game.displayMyCards();
-		
-		//game.getMyCardsFromUser();
-		
+		System.out.print("\n--> What is TRUMP Card [Kupa, Maça, Sinek, Karo]: ");
+		game.setTrumpCard(input.next()); // 2, it is work !
 	
+		System.out.print("\n--> Who is FIRST Player [0,1,2,3]: ");
+		game.setFirstPlayer(input.nextInt()); // 3, it is work !
 		
-		System.out.print("What is TRUMP Card (D,H,C,S): ");
-		game.setTrumpCard(input.next().toUpperCase());
-	
-		System.out.print("Who is FIRST Player (0,1,2,3): ");
-		game.setFirstPlayer(input.nextInt());
-		
-		while (true) {
+		while(true) {
 			
 			game.run();
 			game.whoIsWin();
+			System.out.println("firstssstst: " + game.getFirstPlayer());
 		}
 		
 	}

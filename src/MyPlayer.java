@@ -186,63 +186,7 @@ public class MyPlayer extends Player {
 		return max_value;
 	}
 	
-	/*
-	// not finish lunge->card
-	public int whatIsMyCardAsLastCard (String type, int firstEnemyCard, int secondEnemyL, int thirdEnemyLunge) {
-		
-		int max_value = firstEnemyLunge;
-		if (secondEnemyLunge > max_value) max_value = secondEnemyLunge;
-		if (thirdEnemyLunge > max_value) max_value = thirdEnemyLunge;
-		
-		if (type.equalsIgnoreCase("diamonds") && getDiamonds().size() > 0) {
-			
-			// if I have big card
-			for (int x = 1; max_value+x < 15; x++) {
-				if (doIHave("diamonds", max_value+x)) {
-					removeFromDiamonds(max_value+x);
-					addToDropDiamonds(max_value+x);
-					return max_value+x;
-				}
-			}
-			
-			// if I have not big card
-			for (int x = 2; x < 15; x++) {
-				if (doIHave("diamonds", x)) {
-					removeFromDiamonds(x);
-					addToDropDiamonds(x);
-					return x;
-				}
-			}
-		}
-		
-		else if (type.equalsIgnoreCase("hearts") && getHearts().size() > 0) {
-			
-			// if I have big card
-			for (int x = 1; max_value+x < 15; x++) {
-				if (doIHave("hearts", max_value+x)) {
-					removeFromHearts(max_value+x);
-					addToDropHearts(max_value+x);
-					return max_value+x;
-				}
-			}
-			
-			// if I have not big card
-			for (int x = 2; x < 15; x++) {
-				if (doIHave("hearts", x)) {
-					removeFromDiamonds(x);
-					addToDropDiamonds(x);
-					return x;
-				}
-			}
-		}
-		
-		
-		
-		return 0; // koz varsa koz atýlcak burda
-		
-		
-	}*/
-		
+	
 	public void addToDiamonds(int card) {
 		super.addToDiamonds(card);
 		removeFromNotMyDiamonds(card);
