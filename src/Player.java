@@ -7,45 +7,43 @@ public class Player {
 	private ArrayList<Integer> clubs = new ArrayList<Integer>();
 	private ArrayList<Integer> spades = new ArrayList<Integer>();
 	
-	
-	public void addToDiamonds(int card) {
+	public void addToDiamonds(int card) {						// +++
 		diamonds.add(card);
 	}
-	public void addToHearts(int card) {
+	public void addToHearts(int card) {							// +++
 		hearts.add(card);
 	}
-	public void addToClubs(int card) {
+	public void addToClubs(int card) {							// +++
 		clubs.add(card);
 	}
-	public void addToSpades(int card) {
+	public void addToSpades(int card) {							// +++
 		spades.add(card);
 	}
 	
-	public void removeFromDiamonds(int card) {
+	public void removeFromDiamonds(int card) {					// +++
 		diamonds.remove(new Integer(card));
 	}
-	public void removeFromHearts(int card) {
+	public void removeFromHearts(int card) {					// +++
 		hearts.remove(new Integer(card));
 	}
-	public void removeFromClubs(int card) {
+	public void removeFromClubs(int card) {						// +++
 		clubs.remove(new Integer(card));
 	}
-	public void removeFromSpades(int card) {
+	public void removeFromSpades(int card) {					// +++
 		spades.remove(new Integer(card));
 	}
 	
-	public ArrayList<Integer> getDiamonds() {
+	public ArrayList<Integer> getDiamonds() {					// +++
 		return diamonds;
 	}
-	public ArrayList<Integer> getHearts() {
+	public ArrayList<Integer> getHearts() {						// +++
 		return hearts;
 	}
-	public ArrayList<Integer> getClubs() {
+	public ArrayList<Integer> getClubs() {						// +++
 		return clubs;
 	}
-	public ArrayList<Integer> getSpades() {
+	public ArrayList<Integer> getSpades() {						// +++
 		return spades;
 	}
-	
 	
 }
