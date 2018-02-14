@@ -6,6 +6,7 @@ public class Game {
 	
 	private MyPlayer myPlayer = new MyPlayer();
 	private String trumpCard; // D,H,C,S
+	private boolean trumpCardSituation = false;
 	private String[] myCard;  // first index --> D,H,C,S +++ second index --> 2,3,4,..,14
 	private String[] firstEnemyCard; // first index --> D,H,C,S +++ second index --> 2,3,4,..,14
 	private String[] secondEnemyCard; // first index --> D,H,C,S +++ second index --> 2,3,4,..,14
@@ -35,6 +36,10 @@ public class Game {
 			return false;
 	}
 	
+	public void setTrumpCardSituation (boolean trumpCardSituation) {
+		this.trumpCardSituation = trumpCardSituation;
+	}
+	
 	public void setMyCard(String[] myCard) {											// +++
 		
 		if (myCard[0].equalsIgnoreCase("D")) {
@@ -61,6 +66,9 @@ public class Game {
 			System.out.println("ERROR! myCard was not added. (myCard = null)");
 			this.myCard = null;
 		}
+		
+		if (myCard[0].equalsIgnoreCase(trumpCard))
+			setTrumpCardSituation(true);
 	}	
 	
 	public void setFirstEnemyCard(String[] firstEnemyCard) {							// +++
@@ -85,6 +93,9 @@ public class Game {
 			System.out.println("ERROR! firstEnemyCard was not added. (firstEnemyCard = null)");
 			this.firstEnemyCard = null;
 		}
+		
+		if (firstEnemyCard[0].equalsIgnoreCase(trumpCard))
+			setTrumpCardSituation(true);
 	}
 	
 	public void setSecondEnemyCard(String[] secondEnemyCard) {							// +++
@@ -109,6 +120,9 @@ public class Game {
 			System.out.println("ERROR! secondEnemyCard was not added. (secondEnemyCard = null)");
 			this.secondEnemyCard = null;
 		}
+		
+		if (secondEnemyCard[0].equalsIgnoreCase(trumpCard))
+			setTrumpCardSituation(true);
 	}
 	
 	public void setThirdEnemyCard(String[] thirdEnemyCard) {							// +++
@@ -133,6 +147,9 @@ public class Game {
 			System.out.println("ERROR! thirdEnemyCard was not added. (thirdEnemyCard = null)");
 			this.thirdEnemyCard = null;
 		}
+		
+		if (thirdEnemyCard[0].equalsIgnoreCase(trumpCard))
+			setTrumpCardSituation(true);
 	}
 	
 	public boolean setFirstPlayer(int firstPlayer) {									// +++

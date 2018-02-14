@@ -8,8 +8,8 @@ public class Client {
 	
 		Game game = new Game();
 		
-		//game.getMyCardsFromUser();
-		//game.displayMyCards();
+		game.getMyCardsFromUser();
+		game.displayMyCards();
 		
 		do {
 			System.out.print("--> What is TRUMP Card [D,H,C,S]: ");
@@ -24,7 +24,7 @@ public class Client {
 		while(true) {
 			
 			game.run();
-			game.whoIsWin();
+			//game.whoIsWin();
 			game.displayMyCards();
 		}
 	}

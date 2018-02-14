@@ -61,7 +61,7 @@ public class MyPlayer extends Player {
 		return false;
 	}
 	
-	// tests are still continue..
+	// it is actually work for all paper combinations									// +++
 	public String[] whatIsMyCardAsLastCard (String trumpCard, String firstCardType, String[] firstPlayerCard, String[] secondPlayerCard, String[] thirdPlayerCard) {
 		
 		String[] myCard = new String[2];
@@ -133,6 +133,31 @@ public class MyPlayer extends Player {
 				return myCard;
 			}
 		}
+	}
+	
+	public String[] whatIsMyCardAsFirstCard (String trumpCard, boolean trumpCardSituation) {						// 14.02.2018 13:20
+		
+		// AS varsa atma kýsmý
+		if (!trumpCard.equalsIgnoreCase("D") && this.doIHaveThisCard("D", 14)) {
+			return new String[] {"D", (14 + "")};
+		}
+		if (!trumpCard.equalsIgnoreCase("H") && this.doIHaveThisCard("H", 14)) {
+			return new String[] {"H", (14 + "")};
+		}
+		if (!trumpCard.equalsIgnoreCase("C") && this.doIHaveThisCard("C", 14)) {
+			return new String[] {"C", (14 + "")};
+		}
+		if (!trumpCard.equalsIgnoreCase("S") && this.doIHaveThisCard("S", 14)) {
+			return new String[] {"S", (14 + "")};
+		}
+		
+		
+		
+		
+		
+		
+		
+		return null;
 	}
 	
 	public String[] findOtherMinimumCard (String firstCardType, String trumpCard) {		// +++
@@ -221,8 +246,8 @@ public class MyPlayer extends Player {
 			}
 		}
 		
-		if (cardType1 == "default" || cardType2 == "default" || cardType3 == "default") {
-			System.out.println("ERROR! in findOtherMinimum() someone still 'default', return null. ");
+		if (cardType1 == "default" || cardType2 == "default") {
+			System.out.println("ERROR! in findOtherMinimum() someone(card1,card2) still 'default', return null. ");
 			return null;
 		}
 		
@@ -254,8 +279,6 @@ public class MyPlayer extends Player {
 				return myCard;
 			}
 		}
-		
-		System.out.println("ERROR! chooseSensibleCard() has error. return null.");
 		return null;
 	}
 	
