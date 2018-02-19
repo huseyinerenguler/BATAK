@@ -135,7 +135,7 @@ public class MyPlayer extends Player {
 		}
 	}
 	
-	public String[] whatIsMyCardAsFirstCard (String trumpCard, boolean trumpCardSituation) {						// 14.02.2018 13:20
+	public String[] whatIsMyCardAsFirstCard (String trumpCard, boolean trumpCardSituation) {	// 14.02.2018 13:20
 		
 		// AS varsa atma kýsmý
 		if (!trumpCard.equalsIgnoreCase("D") && this.doIHaveThisCard("D", 14)) {

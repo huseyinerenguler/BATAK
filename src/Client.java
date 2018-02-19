@@ -1,5 +1,13 @@
+/*
+ * Last Update: 19.02.2018 13:20
+ * 
+ * I tried a new system that every card is an object. 
+ * But I measured some performance losses related to comparisons times. 
+ * The project will continue through the current version.
+ */
+
 import java.util.Scanner;
-// I m in :D
+
 public class Client {
 
 	static Scanner input = new Scanner(System.in);
@@ -24,7 +32,7 @@ public class Client {
 		while(true) {
 			
 			game.run();
-			//game.whoIsWin();
+			game.whoIsWin();
 			game.displayMyCards();
 		}
 	}

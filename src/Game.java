@@ -36,7 +36,7 @@ public class Game {
 			return false;
 	}
 	
-	public void setTrumpCardSituation (boolean trumpCardSituation) {
+	public void setTrumpCardSituation (boolean trumpCardSituation) {					// +++
 		this.trumpCardSituation = trumpCardSituation;
 	}
 	
