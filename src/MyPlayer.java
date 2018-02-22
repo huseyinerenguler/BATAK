@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MyPlayer extends Player {
 
@@ -60,6 +61,8 @@ public class MyPlayer extends Player {
 		
 		return false;
 	}
+	
+	//public String[] 
 	
 	// it is actually work for all paper combinations									// +++
 	public String[] whatIsMyCardAsLastCard (String trumpCard, String firstCardType, String[] firstPlayerCard, String[] secondPlayerCard, String[] thirdPlayerCard) {
@@ -137,20 +140,59 @@ public class MyPlayer extends Player {
 	
 	public String[] whatIsMyCardAsFirstCard (String trumpCard, boolean trumpCardSituation) {	// 14.02.2018 13:20
 		
-		// AS varsa atma kýsmý
-		if (!trumpCard.equalsIgnoreCase("D") && this.doIHaveThisCard("D", 14)) {
-			return new String[] {"D", (14 + "")};
-		}
-		if (!trumpCard.equalsIgnoreCase("H") && this.doIHaveThisCard("H", 14)) {
-			return new String[] {"H", (14 + "")};
-		}
-		if (!trumpCard.equalsIgnoreCase("C") && this.doIHaveThisCard("C", 14)) {
-			return new String[] {"C", (14 + "")};
-		}
-		if (!trumpCard.equalsIgnoreCase("S") && this.doIHaveThisCard("S", 14)) {
-			return new String[] {"S", (14 + "")};
-		}
+		// First part --> Control all of my #14 cards and control how many dropped in each type.
+		if (!trumpCard.equalsIgnoreCase("D") && this.doIHaveThisCard("D", 14) && dropDiamonds.size() < 10) {
+			return new String[] {"D", (14 + "")};}
+		if (!trumpCard.equalsIgnoreCase("H") && this.doIHaveThisCard("H", 14) && dropHearts.size() < 10) {
+			return new String[] {"H", (14 + "")};}
+		if (!trumpCard.equalsIgnoreCase("C") && this.doIHaveThisCard("C", 14) && dropClubs.size() < 10) {
+			return new String[] {"C", (14 + "")};}
+		if (!trumpCard.equalsIgnoreCase("S") && this.doIHaveThisCard("S", 14) && dropSpades.size() < 10) {
+			return new String[] {"S", (14 + "")};}
 		
+		// Second part --> ?????????????????????????????????????????????????????????????????????????????????
+		int myBiggestDiamond = (this.getDiamonds().size() > 0) ? Collections.max(this.getDiamonds()) : -1;
+		int myBiggestHeart = (this.getHearts().size() > 0) ? Collections.max(this.getHearts()) : -1;
+		int myBiggestClub = (this.getClubs().size() > 0) ? Collections.max(this.getClubs()) : -1;
+		int myBiggestSpade = (this.getSpades().size() > 0) ? Collections.max(this.getSpades()) : -1;
+		
+		// Diamonds control part
+		int control = 1;
+		if (myBiggestDiamond != -1) {
+			for (int card = myBiggestDiamond + 1; card < 15; card++) {
+				if (!dropDiamonds.contains(new Integer(card)))
+					control = 0;}
+			if (control == 1 && dropDiamonds.size() < 10) {
+				return new String[] {"D", (myBiggestDiamond + "")};}}
+		
+		// Hearts control part
+		control = 1;
+		if (myBiggestHeart != -1) {
+			for (int card = myBiggestHeart + 1; card < 15; card++) {
+				if (!dropHearts.contains(new Integer(card)))
+					control = 0;}
+			if (control == 1 && dropHearts.size() < 10) {
+				return new String[] {"H", (myBiggestHeart + "")};}}
+		
+		// Clubs control part
+		control = 1;
+		if (myBiggestClub != -1) {
+			for (int card = myBiggestClub + 1; card < 15; card++) {
+				if (!dropClubs.contains(new Integer(card)))
+					control = 0;}
+			if (control == 1 && dropClubs.size() < 10) {
+				return new String[] {"C", (myBiggestClub + "")};}}
+		
+		// Spades control part
+		control = 1;
+		if (myBiggestSpade != -1) {
+			for (int card = myBiggestSpade + 1; card < 15; card++) {
+				if (!dropSpades.contains(new Integer(card)))
+					control = 0;}
+			if (control == 1 && dropSpades.size() < 10) {
+				return new String[] {"S", (myBiggestSpade + "")};}}
+				
+		// Third Part --> ?????????????????????????????????????????????????????????
 		
 		
 		
