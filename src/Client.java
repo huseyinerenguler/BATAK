@@ -1,9 +1,8 @@
 /*
- * Last Update: 19.02.2018 13:20
+ * Last Update: 27.02.2018 23:50
  * 
- * I tried a new system that every card is an object. 
- * But I measured some performance losses related to comparisons times. 
- * The project will continue through the current version.
+ * The project has been suspended for now. Maybe in future, 
+ * algorithms can be reused for the android application.
  */
 
 import java.util.Scanner;

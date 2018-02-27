@@ -62,9 +62,7 @@ public class MyPlayer extends Player {
 		return false;
 	}
 	
-	//public String[] 
-	
-	// it is actually work for all paper combinations									// +++
+	// it is actually work for all card combinations									// +++
 	public String[] whatIsMyCardAsLastCard (String trumpCard, String firstCardType, String[] firstPlayerCard, String[] secondPlayerCard, String[] thirdPlayerCard) {
 		
 		String[] myCard = new String[2];
@@ -139,7 +137,7 @@ public class MyPlayer extends Player {
 	}
 	
 	public String[] whatIsMyCardAsFirstCard (String trumpCard, boolean trumpCardSituation) {	// 14.02.2018 13:20
-		
+	
 		// First part --> Control all of my #14 cards and control how many dropped in each type.
 		if (!trumpCard.equalsIgnoreCase("D") && this.doIHaveThisCard("D", 14) && dropDiamonds.size() < 10) {
 			return new String[] {"D", (14 + "")};}
